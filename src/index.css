@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+.header {
+  height: 5.2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* LOGO */
+.logo-container img {
+  height: 50px;
+  width: 80px;
+  margin: 17px;
+}
+
+.nav-items ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin-right: 20px;
+  margin: 20px;
+  padding: 0px 20px;
+}
+.nav-items ul li {
+  padding: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+}
+.nav-items ul li:hover{
+  color: orange;
+}
+/* SEARCH */
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 13px;
+}
+.search input {
+  height: 35px;
+  width: 35vw;
+  border: 2px solid black;
+  border-radius: 5px;
+  
+  text-align: center;
+}
+#search-btn {
+  margin-left: 10px;
+  height: 2remx;
+  width:4rem;
+  padding: 3px;
+  border-radius: 5px;
+  background-color: gray;
+  color: white;
+  border: none;
+}
+/* RES CONTAINER */
+
+/* RES CARD */
+.res-card {
+  height: 300px;
+  width: 232px;
+  margin: 18px;
+  /* padding: -15px; */
+  border-radius: 13px;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.res-card img {
+  height: 140px;
+  width: 325px;
+  border-radius: 12px;
+  /* overflow: hidden; */
+}
+.res-card h3 {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 17;
+  font-weight: 900;
+}
+.res-card h4 {
+  text-align: center;
+  font-weight: 300;
+  font-size: small;
+}
+.res-card h5 {
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+}
+/* FILTER BUTTON */
+
+/* SHIMMER UI */
+
+.shimmer-card {
+  height: 180px;
+  width: 210px;
+  background-color: #f0f0f0;
+  margin-top: -30px;
+  margin: 20px;
+  padding: 8px;
+  border-radius: 13px;
+}
+.banner-shimmer{
+  margin-top: -60px;
+  height: 390px;
+  width: 100vw;
+  
+}
+.res-text{
+  height: 10px;
+  width: 20vw;
+  background-color: gray;
+
+}
+
+.login{
+  height: 2.2rem;
+  width: 4rem;
+  position: relative;
+  font-weight: bold;
+  top: 14px;
+  left: 20px;
+  color: black;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 8px;
+}
+.banner-card {
+  /* border-radius: 50%; */
+  padding: 8px;
+  position: relative;
+  overflow: hidden;  
+}
+
+
+
+.medtext{
+  font-size: 13;
+}
+.spinner{
+  margin-left: 48vw;
+  margin-top: 45px;
+}
+/* RES MENU */
+
+.left img{
+  height: 210px;
+  width: 270px;
+  border-radius: 12px;
+  margin: 30px;
+  margin-left: 20vw;
+}
+.left img:hover{
+  border: 2px solid white;
+}
+.right{
+  justify-content: flex-end;
+  margin-left: 22vw;
+  margin-top: 10px;
+}
+.rating{
+  background-color: aliceblue;
+  border-radius: 20%;
+  padding: 10px;
+}
+.discount{
+  display: inline-block;
+  font-size: larger;
+  width: auto;
+  margin: 20px;
+  margin-left: -6px;
+  line-height: 20px;
+  background-color:aquamarine ;
+  margin-top: 20px;
+}
+/* DISHES LIST RES MENU */
+.dishes-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+}
+
+.dish-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+
+
+/* BLINKING */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@-webkit-keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@-moz-keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+#blinkingItem, #blinking {
+  animation: blink 2s infinite;
+}
+
+/* discount button */
+#discount-btn{
+  position: relative;
+  left: 21vw;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 16px;
+  line-height: 30px;
+}
+.discount-text{
+  width: fit-content;
+}
+
+
+#text{
+  position: relative;
+  margin-right: 60vw;
+  font-size: 23px;
+}
+#txt{
+  
+  font-size: 23px;
+}
+
+
