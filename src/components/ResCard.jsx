@@ -1,7 +1,7 @@
 import { IMG_CDN_URL } from "../utils/constants";
 import vagIcon from "../images/vagIcon.svg";
 import { MdFiberNew } from "react-icons/md";
-const ResCard = ({
+ const ResCard = ({
   cloudinaryImageId,
   name,
   avgRating,
@@ -62,4 +62,5 @@ export const WithOpenLabel = (ResCard) => {
     );
   };
 };
+
 export default ResCard;

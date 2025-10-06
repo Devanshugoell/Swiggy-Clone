@@ -1,7 +1,7 @@
-import ResCard from "./ResCard";
+
 import ResCardShimmer from "../shimmers/ResCardShimmer";
 import { Link } from "react-router-dom";
-import ResCard, { WithOpenLabel } from "./ResCard";
+import  ResCard ,{WithOpenLabel} from "./ResCard";
 
 function TopRest({ listOfRestaurants, bodyTitle }) {
   // HIGHER ORDER COMPONENT

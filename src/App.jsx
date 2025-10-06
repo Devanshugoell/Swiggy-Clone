@@ -18,7 +18,7 @@ import store from "./store/store";
 import CartPage from "./pages/CartPage";
 import ThankYou from "./pages/ThankYou";
 
-const AppLayout = () => {
+export const AppLayout = () => {
   const [userName, setUserName] = useState();
 
   // authentication

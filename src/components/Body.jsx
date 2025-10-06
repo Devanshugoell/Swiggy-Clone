@@ -3,8 +3,8 @@ import useOnlineStatus from "../hooks/useOnlineStatus.jsx";
 import { API_CDN } from "../utils/constants.jsx";
 import Banner from "./Banner.jsx";
 import Offline from "../pages/Offline.jsx";
-import TopRest from "./TopRest.js";
-import OnlineRest from "./OnlineRest.js";
+import TopRest from "./TopRest.jsx";
+import OnlineRest from "./OnlineRest.jsx";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
