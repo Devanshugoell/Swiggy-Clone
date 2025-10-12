@@ -15,7 +15,7 @@ const Header = () => {
   // console.log(cartItems);
 
   return (
-    <div className="header">
+    <div className="header px-40">
       {/* HEADER LOGO  */}
       <div className="logo-container flex flex-row justify-center items-center">
         <Link to="/">

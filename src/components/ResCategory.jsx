@@ -9,9 +9,9 @@ const ResCategory = ({ data }) => {
     setShowItems(!showItems);
   }
   return (
-    <div className="ml-7 mr-7">
+    <div className="mx-7">
       {/* Accordion Header */}
-      <div className=" mt-4 mb-4 w-full bg-none shadow-lg p-6">
+      <div className=" mt-4 mb-4 w-full bg-none shadow-xl p-6 rounded-md">
         <div
           className="flex justify-between cursor-pointer"
           onClick={handleClick}

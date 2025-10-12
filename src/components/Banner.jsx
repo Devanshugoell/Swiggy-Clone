@@ -6,14 +6,14 @@ const Banner = ({ banners }) => {
   const limitedBanners = banners?.slice(0, 8);
 
   return (
-    <div className="flex flex-col m-22 -mt-2 items-center ">
-      <div className="flex">
-        <span id="text" className="relative -ml-12 mb-2 font-extrabold">
-          What's on your mind?
+    <div className="flex flex-col items-center">
+      <div className="flex w-full">
+        <span id="text" className="relative ml-40 mt-4 font-extrabold">
+          {limitedBanners?.length ? "What's on your mind?" : "Find your favorite dish"}
         </span>
       </div>
 
-      <div className="flex border-b-2 border-gray-300 mb-12 mt-3">
+      <div className="flex flex-wrap border-b-2 border-gray-300 mb-8">
         {limitedBanners?.length > 0 ? (
           limitedBanners.map((banner) => (
             <div

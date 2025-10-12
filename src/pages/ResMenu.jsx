@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import ResCardShimmer from "../shimmers/ResCardShimmer";
+import ResMenuShimmer from "../shimmers/ResMenuShimmer";
 import useResMenu from "../hooks/useResMenu";
 import { Clock8, IndianRupee } from "lucide-react";
 import ResCategory from "../components/ResCategory";
@@ -9,7 +9,7 @@ const ResMenu = () => {
   const resInfo = useResMenu(resId);
 
   if (resInfo === null) {
-    return <ResCardShimmer />;
+    return <ResMenuShimmer />;
   }
 
   const {
@@ -37,9 +37,9 @@ const ResMenu = () => {
 
   return (
     <>
-      <div className="p-80 -mt-80">
-        <div className="flex flex-col items-center justify-center gap-8 py-8 text-zinc-500">
-          <div className="flex sm:w-11/12 w-9/12 flex-col gap-8">
+      <div className="pt-80 pb-5 px-40 -mt-80">
+        <div className="flex flex-col items-center justify-center gap-8 py-8 text-zinc-500 mx-7">
+          <div className="flex w-full flex-col gap-8">
             <div className="flex items-center justify-between">
               <div className="text-xs text-gray-400">
                 <span>Home</span> /{" "}
@@ -49,7 +49,7 @@ const ResMenu = () => {
                 / <span className="text-gray-600"> {name} </span>
               </div>
             </div>
-            <div className="flex w-full flex-col items-center justify-between gap-6 px-3 ">
+            <div className="flex w-full flex-col items-center justify-between gap-6 ">
               <div className="flex w-full items-start justify-between">
                 <div className="text-xs">
                   <div className="flex flex-row">

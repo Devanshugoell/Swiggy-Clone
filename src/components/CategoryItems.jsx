@@ -19,7 +19,7 @@ const CategoryItems = ({ items }) => {
     <div>
       {items.map((item) => (
         <div key={item?.card?.info?.id}>
-          <div className="grid grid-cols-12 border-b-2 border-gray-200 py-4 px-2">
+          <div className="grid grid-cols-12 border-b-2 border-gray-200 py-4 px-2 " >
             <div className="col-span-9 flex flex-col">
               <span className="h-5 w-5 mt-1">
                 {item?.card?.info?.isVeg === 1 ? (

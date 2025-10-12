@@ -19,14 +19,9 @@ import { MdFiberNew } from "react-icons/md";
           className="w-full h-full object-cover"
         />
         <p
-          className={`absolute bottom-2 left-2 z-10 text-xl font-extrabold text-white`}
+          className={`absolute bottom-1 left-0 z-10 text-xl font-extrabold text-white`}
         >
-          <span className="whitespace-nowrap block">
-            {aggregatedDiscountInfoV3?.header}
-          </span>
-          <span className="whitespace-nowrap block">
-            {aggregatedDiscountInfoV3?.subHeader}
-          </span>
+          
         </p>
       </div>
 

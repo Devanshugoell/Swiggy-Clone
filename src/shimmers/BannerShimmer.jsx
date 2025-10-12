@@ -2,12 +2,11 @@ import { SpinnerCircularFixed } from "spinners-react";
 function BannerShimmer() {
   return (
     <div
-      className="flex flex-col -mt-16
-     items-center justify-center"
+      className="animate-pulse flex flex-col items-center justify-center"
     >
-      <div className="banner-shimmer relative banner-text text-center bg-gray-900 text-gray-200 py-14 items-center justify-center text-xl -mt-4">
-        <div className="flex flex-col justify-center">
-          <SpinnerCircularFixed
+      <div className="banner-shimmer flex flex-wrap relative py-2 items-center justify-center text-xl mt-4">
+        <div className="flex justify-center gap-6">
+          {/* <SpinnerCircularFixed
             className="text-center items-center spinner mt-4"
             size={80}
             thickness={100}
@@ -17,10 +16,30 @@ function BannerShimmer() {
           />
           <span className="mt-8 text-2xl font-mono  ">
             Looking for great food near you...
-          </span>
+          </span> */}
+
+
+
+          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
+          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
+          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
+          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
+          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
+          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
+          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
+          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
+
+          <div className="border-b-2 border-gray-300 mt-8"></div>
         </div>
       </div>
     </div>
+
+
+
+      // <div className="flex border-b-2 border-gray-300">
+      //    <div className="h-40 bg-gray-400"></div>
+      // </div>
+    
   );
 }
 
