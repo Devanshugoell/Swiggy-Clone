@@ -113,10 +113,10 @@ box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
 
 .shimmer-card {
   height: 250px;
-  width: 200px;
+  width: 220px;
   background-color: #f0f0f0;
   margin-top: -30px;
-  margin: 20px;
+  margin: 10px;
   padding: 8px;
   border-radius: 13px;
 }
