@@ -66,28 +66,21 @@ export default function CartPage({ items }) {
             aria-labelledby="cart-heading"
             className="rounded-lg bg-white lg:col-span-7"
           >
-            <button
-              onClick={() => handleClearCart()}
-              className="bg-orange-500 text-white px-6 -mb-20 py-2 rounded-md"
-              style={{ marginLeft: "32vw" }}
-            >
-              Clear Cart
-            </button>
             <ul role="list" className="divide-y divide-gray-200">
               {items.map((item) => (
                 <div key={item?.card?.info?.id} className="">
                   <li className="flex py-6 sm:py-6 ">
-                    <div className="flex-shrink-0">
+                    <div>
                       <img
                         src={IMG_CDN_URL + item?.card?.info?.imageId}
-                        className="sm:h-22 sm:w-20 h-20 w-20 rounded-md object-cover"
+                        className="h-28 w-28 rounded-md object-cover"
                       />
                     </div>
 
                     <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
                       <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                         <div>
-                          <div className="flex gap-3 items-center">
+                          <div className="flex gap-2 items-center">
                             <span className="h-5 w-5 mt-1">
                               {item?.card?.info?.isVeg === 1 ? (
                                 <img src="https://img.icons8.com/?size=48&id=61083&format=png" />
@@ -95,7 +88,7 @@ export default function CartPage({ items }) {
                                 <img src="https://img.icons8.com/?size=48&id=61082&format=png" />
                               )}
                             </span>
-                            <h3 className="text-md font-semibold">
+                            <h3 className=" text-base font-semibold">
                               {item?.card?.info?.name}
                             </h3>
                           </div>
@@ -116,7 +109,7 @@ export default function CartPage({ items }) {
                           </div>
                         </div>
                       </div>
-                      <div className="mb-2 flex">
+                      <div className="mb-2 flex justify-between items-centers">
                         <div className="min-w-24 flex">
                           <button
                             onClick={() =>
@@ -196,16 +189,15 @@ export default function CartPage({ items }) {
             <div>
               <dl className="space-y-1 px-1 py-4">
                 <div className="flex items-center justify-between">
-                  <div className="flex flex-col justify-center items-center w-full">
+                  <div className="flex flex-col justify-between items-center w-full h-full">
                     {items.map((item) => (
                       <div
                         key={item?.card?.info?.id}
-                        className="flex flex-row items-center justify-evenly pt-2"
+                        className="flex flex-row items-center justify-evenly w-full"
                       >
-                        <div className="flex flex-row gap-28 items-center justify-between py-4">
-                          <div>
+                        <div className="flex flex-row items-center justify-between py-4 w-full">
+                          <div className="w-10/12">
                             <span className="text-md text-gray-800 flex-wrap font-bold">
-                              {" "}
                               {item?.card?.info?.name}&nbsp;
                             </span>
 
@@ -213,7 +205,7 @@ export default function CartPage({ items }) {
                               ({item?.quantity})
                             </span>
                           </div>
-                          <span className="text-sm font-medium  mr-4 text-green-700">
+                          <span className="text-sm font-medium text-green-700">
                             ₹ {getItemPrice(item)}
                           </span>
                         </div>
@@ -222,20 +214,20 @@ export default function CartPage({ items }) {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between py-4 border-dashed ">
-                  <dt className="flex text-sm text-gray-800">
+                <div className="flex items-center justify-between py-4 border-dashed w-full ">
+                  <dt className="flex text-sm text-gray-800 w-10/12">
                     <span>Delivery Charges</span>
                   </dt>
-                  <dd className="text-sm font-medium mr-8 text-green-700 ">
+                  <dd className="text-sm font-medium text-green-700 ">
                     ₹ 30
                   </dd>
                 </div>
 
-                <div className="flex items-center justify-between border-y px-6  ">
-                  <dt className="text-lg font-medium text-gray-900">
+                <div className="flex items-center justify-between border-y">
+                  <dt className="text-lg font-medium text-gray-900 ">
                     Total Amount
                   </dt>
-                  <dd className="text-lg font-medium mr-4 text-gray-900">
+                  <dd className="text-lg font-medium text-gray-900">
                     ₹ {calculateTotalPrice()}
                   </dd>
                 </div>
@@ -247,7 +239,7 @@ export default function CartPage({ items }) {
                 <button
                   onClick={() => handleClearCart()}
                   type="button"
-                  className="px-8 ml-24 py-3 rounded-lg mt-6 bg-green-500"
+                  className="flex px-8 py-3 rounded-lg bg-green-500"
                 >
                   PLACE ORDER
                 </button>

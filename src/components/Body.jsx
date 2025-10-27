@@ -8,9 +8,6 @@ import OnlineRest from "./OnlineRest.jsx";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [topRest, setTopRest] = useState([]);
-  const [onlineRest, setOnlineRest] = useState([]);
-  const [onlineTitle, setOnlineTitle] = useState("");
   const [bannerData, setBannerData] = useState([]);
   const [bodyTitle, setBodyTitle] = useState("");
 
@@ -35,6 +32,8 @@ const Body = () => {
 
         // ✅ 2️⃣ Build dynamic API using template literals
         const newAPI = `https://foodfire.onrender.com/api/restaurants?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`;
+
+        // const newAPI = `https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
 
         // ✅ 3️⃣ Fetch API using dynamic lat/lng
         const response = await fetch(newAPI);
