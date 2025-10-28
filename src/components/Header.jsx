@@ -46,7 +46,7 @@ const Header = () => {
               Cart ({cartItems.length})
             </li>
           </Link>
-          <Link to="/sign-in">
+          <Link to="/">
             <li className="flex items-center justify-center">
               <span className="p-2">
                 <FaRegUser size={18} />

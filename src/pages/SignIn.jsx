@@ -1,67 +1,117 @@
-import { useNavigate } from "react-router-dom";
-import UserContext from "../context/UserContext";
+import { useForm } from "react-hook-form";
 import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import api from "../api/axios";
+import { useNavigate  , Navigate } from "react-router-dom";
 
-export default function SignIn() {
-  const { loggedInUser, setUserName } = useContext(UserContext);
-  const navigate = useNavigate();
+const SignIn = () => {
 
-  const handleLogin = () => {
-    navigate("/");
+  const token = localStorage.getItem("token");
+
+  // If token exists, redirect to /restaurant
+  if (token) {
+    return <Navigate to="/restaurant" replace />;
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { login } = useContext(AuthContext);
+   const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    try {
+      console.log("This is data before sending" , data)
+      const response = await api.post("/auth/login", data);
+      console.log("API Response:", response.data);
+      if (!response.data.access_token && !response.data.token) {
+        throw new Error("No token received from server");
+      }
+      const token = response.data.access_token || response.data.token;
+      login(token); // save to context + localStorage
+      navigate("/restaurant");  // redirect
+    } catch (error) {
+      console.error("Login failed:", error.response?.data || error.message);
+    }
   };
+
+
   return (
-    <section className="mb-80">
-      <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-        <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-          <h2 className="text-left text-3xl font-bold leading-tight text-black">
-            Login
-          </h2>
-          <p className="mt-2 text-left text-sm text-gray-600 ">
-            or &nbsp;
-            <span className="font-semibold text-orange-400 transition-all duration-200 hover:underline">
-              Create an account
-            </span>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+        <div className="text-left mb-6 flex flex-col gap-2">
+          <p className="text-3xl font-semibold font-montserrat spacing">
+            HUNGRY?
           </p>
-          <div className="-mt-24 flex justify-end">
-            <img
-              className="h-28 w-28"
-              src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r"
-            />
-          </div>
-          <form className="mt-8">
-            <div className="space-y-5">
-              <div>
-                <div className="mt-2">
-                  <input
-                    value={loggedInUser}
-                    onChange={(e) => setUserName(e.target.value)}
-                    className="flex h-14 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                    type="text"
-                    placeholder="NAME"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <button
-                  onClick={handleLogin}
-                  type="button"
-                  className="inline-flex w-full items-center justify-center rounded-md bg-orange-500 px-3.5 py-3 font-semibold leading-7 text-white hover:bg-orange/80"
-                >
-                  LOGIN
-                </button>
-
-                <small className="text-gray-400 text-xs mt-3">
-                  By clicking on Login, I accept the &nbsp;
-                  <span className="text-black">
-                    Terms & Conditions & Privacy Policy
-                  </span>
-                </small>
-              </div>
-            </div>
-          </form>
+          <p className="text-gray-500 text-lg ">Order food from favourite restaurants near you.</p>
         </div>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* Email */}
+          <div>
+            <label className="block text-base font-medium text-gray-700 mb-1">
+              Email
+            </label>
+            <input
+              type="email"
+              {...register("email", { required: "Email is required" })}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
+              placeholder="name@example.com"
+            />
+            {errors.email && (
+              <p className="text-orange-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-base font-medium text-gray-700 mb-1">
+              Password
+            </label>
+            <input
+              type="password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: { value: 6, message: "Minimum 6 characters" },
+              })}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
+              placeholder="••••••••"
+            />
+            {errors.password && (
+              <p className="text-orange-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
+
+          {/* <div className="text-right">
+            <a href="/forgotPassword" className="hover:text-redColor">
+              Forgot password?
+            </a>
+          </div> */}
+
+          {/* Submit Button */}
+          <button
+            className="w-full text-orange-500 hover:text-white py-2 rounded-lg hover:bg-orange-500 transition duration-200 border-orange-500 border-2 font-montserrat !mt-6 font-medium"
+          >
+            Sign in
+          </button>
+        </form>
+
+        <p className="text-base text-gray-600 text-center mt-4">
+          Don’t have an account?
+          <a href="/register" className="text-redColor pl-2 hover:underline hover:text-orange-500">
+            Sign up
+          </a>
+        </p>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default SignIn;

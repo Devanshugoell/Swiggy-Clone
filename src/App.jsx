@@ -1,53 +1,47 @@
-import React, { useState, lazy, Suspense, useEffect } from "react";
-import ReactDOM from "react-dom/client";
-import Header from "./components/Header";
+import React, { lazy, Suspense } from "react";
+import { createBrowserRouter } from "react-router-dom";
+import AppLayout from "./components/AppLayout";
 import Body from "./components/Body";
-import UserContext from "./context/UserContext";
-
-const Footer = lazy(() => import("./components/Footer"));
-const Search = lazy(() => import("./pages/Search"));
-const SignIn = lazy(() => import("./pages/SignIn"));
-
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { Error } from "./pages/Error";
 import ResMenu from "./pages/ResMenu";
 import Cart from "./pages/Cart";
 import Loader from "./shimmers/LoaderShimmer";
-import { Provider } from "react-redux";
-import store from "./store/store";
-import CartPage from "./pages/CartPage";
 import ThankYou from "./pages/ThankYou";
+import Register from "./pages/Register";
 
-export const AppLayout = () => {
-  const [userName, setUserName] = useState();
-
-  // authentication
-  useEffect(() => {
-    // an api call to get username and password
-    const data = {
-      name: "Devanshu",
-    };
-    setUserName(data.name);
-  }, []);
-  return (
-    <Provider store={store}>
-      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </UserContext.Provider>
-    </Provider>
-  );
-};
+const Search = lazy(() => import("./pages/Search"));
+const SignIn = lazy(() => import("./pages/SignIn"));
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <SignIn />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/register",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Register />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/",
     element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       {
-        path: "/",
-        element: <Body />,
+        path: "/restaurant",
+        element: (
+        <ProtectedRoute>
+          <Body />
+        </ProtectedRoute>
+        ),
       },
       {
         path: "/search",
@@ -58,34 +52,33 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: "/sign-in",
-        element: (
-          <Suspense fallback={<Loader />}>
-            <SignIn />
-          </Suspense>
-        ),
-      },
-      {
         path: "/cart",
         element: (
-          <Suspense fallback={<Loader />}>
-            <Cart />
-          </Suspense>
+          <ProtectedRoute>
+            <Suspense fallback={<Loader />}>
+              <Cart />
+            </Suspense>
+          </ProtectedRoute>
         ),
       },
       {
         path: "/thankyou",
-        element: <ThankYou />,
+        element: (
+          <ProtectedRoute>
+            <ThankYou />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/restaurants/:resId",
-        element: <ResMenu />,
+        element: (
+          <ProtectedRoute>
+            <ResMenu />
+          </ProtectedRoute>
+        ),
       },
     ],
-    errorElement: <Error />,
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<RouterProvider router={appRouter} />);
+export { appRouter };
