@@ -12,23 +12,10 @@ const Body = () => {
   const [bodyTitle, setBodyTitle] = useState("");
 
   useEffect(() => {
-
-     const fetchData = async () => {
+    const fetchData = async () => {
       try {
-        // ✅ 1️⃣ Get user location
-        const position = await new Promise((resolve, reject) => {
-          if (!navigator.geolocation) {
-            reject(new Error("Geolocation is not supported by your browser."));
-          } else {
-            navigator.geolocation.getCurrentPosition(
-              (pos) => resolve(pos),
-              (err) => reject(err)
-            );
-          }
-        });
-
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
+        const lat = 28.6139;
+        const lng = 77.209;
 
         // ✅ 2️⃣ Build dynamic API using template literals
         const newAPI = `https://foodfire.onrender.com/api/restaurants?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`;
@@ -66,56 +53,14 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  // const fetchData = async () => {
-  //   try {
-  //     const data = await fetch(API_CDN);
-  //     const json = await data.json();
-
-  //     // FIRST ROW
-  //     setBannerData(
-  //       json?.data?.cards[0]?.card?.card?.imageGridCards?.info.map(
-  //         (bannerInfo) => ({
-  //           id: bannerInfo.id,
-  //           imageId: bannerInfo.imageId,
-  //           action: bannerInfo.action,
-  //         })
-  //       ) || []
-  //     );
-  //     // SECOND ROW
-  //     setListOfRestaurants(
-  //       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-  //         ?.restaurants
-  //     );
-  //     setBodyTitle(json?.data?.cards[1]?.card?.card?.header?.title);
-  //     setTopRest(
-  //       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-  //         ?.restaurants
-  //     );
-  //     // THIRD ROW
-
-  //     setOnlineRest(
-  //       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-  //         ?.restaurants
-  //     );
-  //     setOnlineTitle(json?.data?.cards[2]?.card?.card?.title);
-  //     console.log("online rest", onlineRest);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-
   if (onlineStatus === false) {
     return <Offline />;
   }
 
   return (
     <div className="overflow-hidden">
-      {/* What's on your mind? */}
       <Banner banners={bannerData} />
-      {/* Top restaurant chains in Vellore */}
       <TopRest listOfRestaurants={listOfRestaurants} bodyTitle={bodyTitle} />
-      {/* Restaurants with online food delivery in Vellore */}
-      {/* <OnlineRest {...onlineRest?.info} title={onlineTitle} /> */}
     </div>
   );
 };
