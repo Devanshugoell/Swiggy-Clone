@@ -239,7 +239,7 @@ export default function CartPage({ items }) {
                 <button
                   onClick={() => handleClearCart()}
                   type="button"
-                  className="flex px-8 py-3 rounded-lg bg-green-500"
+                  className="flex px-8 py-3 rounded-lg bg-green-500 mx-auto"
                 >
                   PLACE ORDER
                 </button>

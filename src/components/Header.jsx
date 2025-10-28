@@ -1,18 +1,23 @@
-import React, { useContext } from "react";
+
 import LOGO from "../images/logo.svg";
 import { Link } from "react-router-dom";
 import { Search, BadgePercent, LifeBuoy, ShoppingBag } from "lucide-react";
 import { FaRegUser } from "react-icons/fa6";
-import UserContext from "../context/UserContext";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  // data from context
-  const { loggedInUser } = useContext(UserContext);
 
   // selector hook to subscribe to cartSlice / store
   const cartItems = useSelector((store) => store.cart.items);
-  // console.log(cartItems);
+  const navigate = useNavigate();
+  
+  // Logout function
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
 
   return (
     <div className="header px-40">
@@ -46,15 +51,12 @@ const Header = () => {
               Cart ({cartItems.length})
             </li>
           </Link>
-          <Link to="/">
-            <li className="flex items-center justify-center">
+            <li className="flex items-center justify-center" onClick={handleLogout} >
               <span className="p-2">
                 <FaRegUser size={18} />
               </span>
-              {loggedInUser ? loggedInUser : "Sign In"}
+             logout
             </li>
-          </Link>
-
         </ul>
       </div>
     </div>
