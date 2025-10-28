@@ -4,7 +4,7 @@ const ResMenuShimmer = () => {
   return (
     <div className="animate-pulse">
       <div className="shadow-xl h-52 w-4/5 bg-gray-200 mx-auto mt-3 mb-6 rounded-md">
-        <div className="pt-10">
+        <div className="pt-10 ml-6">
           <div className="shimmer-heading w-[12%] h-10 bg-neutral-300 mt-4  rounded-lg"></div>
           <div className="shimmer-para w-[5%] h-3 bg-neutral-300 mt-4  rounded-lg"></div>
           <div className="shimmer-desc w-[5%] h-3 bg-neutral-300 mt-4  rounded-lg"></div>
@@ -19,7 +19,6 @@ const ResMenuShimmer = () => {
       </div>
 
       <div className="shadow-xl h-96 w-4/5 bg-gray-200 mx-auto my-4 rounded-md">
-        <div className="flex justify-between"> 
           <div className="pt-10 ml-10">
             <div className="Recommended w-[8%] h-4 bg-neutral-300 mt-4  rounded-lg"></div>
 
@@ -35,7 +34,6 @@ const ResMenuShimmer = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

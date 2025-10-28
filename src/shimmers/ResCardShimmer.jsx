@@ -44,7 +44,7 @@ const ResCardShimmer = () => {
           <div className="shimmer-desc w-[85%] h-3 bg-neutral-300 mt-4  rounded-lg"></div>
           <div className="shimmer-location w-[40%] h-3 bg-neutral-300 mt-4  rounded-lg"></div>
         </div>
-<div className="shimmer-card">
+        <div className="shimmer-card">
           <div className="shimmer-img   h-1/2 bg-neutral-300 mx-auto rounded-lg"></div>
           <div className="shimmer-heading w-[35%] h-3 bg-neutral-300 mt-4  rounded-lg"></div>
           <div className="shimmer-para w-[45%] h-3 bg-neutral-300 mt-4  rounded-lg"></div>
