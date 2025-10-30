@@ -22,7 +22,7 @@ const Banner = ({ banners }) => {
             >
               <div className="flex flex-col justify-center items-center">
                 <img
-                  className="h-20 w-20 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-36 lg:w-36 rounded-full object-cover"
+                  className="h-28 w-auto sm:h-32 md:h-36 lg:h-40 rounded-full object-cover"
                   src={IMG_CDN_URL + banner.imageId}
                   alt={banner?.action?.text}
                 />
