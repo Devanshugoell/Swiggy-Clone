@@ -9,18 +9,19 @@ const ResCategory = ({ data }) => {
     setShowItems(!showItems);
   }
   return (
-    <div className="mx-7">
+    <div className="mx-0 sm:mx-4 md:mx-7">
       {/* Accordion Header */}
-      <div className=" mt-4 mb-4 w-full bg-none shadow-xl p-6 rounded-md">
+      <div className="mt-3 sm:mt-4 mb-3 sm:mb-4 w-full bg-none shadow-xl p-4 sm:p-6 rounded-md">
         <div
           className="flex justify-between cursor-pointer"
           onClick={handleClick}
         >
-          {" "}
-          <span className="font-extrabold text-lg">
+          <span className="font-extrabold text-base sm:text-lg">
             {data?.title} &nbsp;({data?.itemCards?.length})
           </span>
-          <span>{showItems ? <ChevronUp /> : <ChevronDown />}</span>
+          <span>
+            {showItems ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          </span>
         </div>
 
         {showItems && <CategoryItems items={data?.itemCards} />}

@@ -8,11 +8,11 @@ function TopRest({ listOfRestaurants, bodyTitle }) {
   const ResCardOpen = WithOpenLabel(ResCard);
   return (
     <>
-      <span id="txt" className="font-extrabold relative ml-40 mb-18">
-        {bodyTitle}
-      </span>
-      <div>
-        <div className="flex flex-wrap justify-center items-center py-7 px-40 gap-4">
+      <div className="px-4 sm:px-8 md:px-16 lg:px-20">
+        <span className="font-extrabold text-lg sm:text-xl md:text-2xl block mb-4">
+          {bodyTitle}
+        </span>
+        <div className="flex flex-wrap justify-center sm:justify-center items-center py-4 sm:py-7 gap-4 sm:gap-6">
           {listOfRestaurants?.length > 0 ? (
             listOfRestaurants.map((restaurant, index) => (
               <Link

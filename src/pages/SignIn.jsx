@@ -40,25 +40,31 @@ const SignIn = () => {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4 sm:px-6">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6 sm:p-8">
         <div className="text-left mb-6 flex flex-col gap-2">
-          <p className="text-3xl font-semibold font-montserrat spacing">
+          <p className="text-2xl sm:text-3xl font-semibold font-montserrat spacing">
             HUNGRY?
           </p>
-          <p className="text-gray-500 text-lg ">Order food from favourite restaurants near you.</p>
+          <p className="text-gray-500 text-base sm:text-lg">Order food from favourite restaurants near you.</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Email */}
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-sm sm:text-base font-medium text-gray-700 mb-1">
               Email
             </label>
             <input
               type="email"
-              {...register("email", { required: "Email is required" })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
+              {...register("email", { 
+                required: "Email is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Please enter a valid email address"
+                }
+              })}
+              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="name@example.com"
             />
             {errors.email && (
@@ -70,7 +76,7 @@ const SignIn = () => {
 
           {/* Password */}
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-sm sm:text-base font-medium text-gray-700 mb-1">
               Password
             </label>
             <input
@@ -79,7 +85,7 @@ const SignIn = () => {
                 required: "Password is required",
                 minLength: { value: 6, message: "Minimum 6 characters" },
               })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
+              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
               placeholder="••••••••"
             />
             {errors.password && (
@@ -89,22 +95,16 @@ const SignIn = () => {
             )}
           </div>
 
-          {/* <div className="text-right">
-            <a href="/forgotPassword" className="hover:text-redColor">
-              Forgot password?
-            </a>
-          </div> */}
-
           {/* Submit Button */}
           <button
-            className="w-full text-orange-500 hover:text-white py-2 rounded-lg hover:bg-orange-500 transition duration-200 border-orange-500 border-2 font-montserrat !mt-6 font-medium"
+            className="w-full text-orange-500 hover:text-white py-2 text-sm sm:text-base rounded-lg hover:bg-orange-500 transition duration-200 border-orange-500 border-2 font-montserrat !mt-6 font-medium"
           >
             Sign in
           </button>
         </form>
 
-        <p className="text-base text-gray-600 text-center mt-4">
-          Don’t have an account?
+        <p className="text-sm sm:text-base text-gray-600 text-center mt-4">
+          Don't have an account?
           <a href="/register" className="text-redColor pl-2 hover:underline hover:text-orange-500">
             Sign up
           </a>

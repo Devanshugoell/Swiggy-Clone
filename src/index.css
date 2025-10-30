@@ -17,7 +17,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 /* LOGO */
@@ -25,6 +26,14 @@ box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
   height: 50px;
   width: 80px;
   margin: 17px;
+}
+
+@media (max-width: 640px) {
+  .logo-container img {
+    height: 40px;
+    width: 64px;
+    margin: 12px;
+  }
 }
 
 .nav-items ul {
@@ -43,6 +52,12 @@ box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.1);
 }
 .nav-items ul li:hover{
   color: orange;
+}
+
+@media (max-width: 768px) {
+  .nav-items ul li {
+    padding: 12px;
+  }
 }
 /* SEARCH */
 .search {

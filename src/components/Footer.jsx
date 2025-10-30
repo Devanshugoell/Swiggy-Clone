@@ -3,9 +3,9 @@ import LOGO from "../images/logo.svg";
 
 function Footer() {
   return (
-    <div className="text-medium mt-6 flex flex-row w-full justify-evenly gap-4 overflow-hidden bg-black p-12 text-gray-400 pb-24">
+    <div className="text-medium mt-6 flex flex-col sm:flex-row  w-full justify-evenly gap-4 overflow-hidden bg-black p-12 text-gray-400 pb-24">
       {/* item1 */}
-      <div className="flex flex-col gap-2 xs:gap-1 whitespace-nowrap sm:overflow-hidden">
+      <div className="flex flex-col gap-2 xs:gap-1 whitespace-nowrap sm:overflow-hidden mb-4 sm:mb-0">
         <h3 className="text-2xl xs:text-lg font-bold flex items-center gap-2 xs:gap-1 text-white">
           <Link to="/">
             <img
@@ -22,7 +22,7 @@ function Footer() {
       </div>
 
       {/* item2 */}
-      <div className="flex flex-col gap-2 xs:gap-1  whitespace-nowrap sm:overflow-hidden">
+      <div className="flex flex-col gap-2 xs:gap-1  whitespace-nowrap sm:overflow-hidden mb-4 sm:mb-0">
         <h3 className="text-lg xs:text-sm font-bold text-white">Company</h3>
         <span>About</span>
         <span>Careers</span>
@@ -33,7 +33,7 @@ function Footer() {
       </div>
 
       {/* item3 */}
-      <div className="flex flex-col gap-8 xs:gap-1 whitespace-nowrap sm:overflow-hidden">
+      <div className="flex flex-col gap-8 xs:gap-1 whitespace-nowrap sm:overflow-hidden mb-4 sm:mb-0">
         <div className="flex flex-col gap-2 xs:gap-1 whitespace-nowrap mb-10">
           <h3 className="text-lg font-bold xs:text-sm text-white">
             Contact us

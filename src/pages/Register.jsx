@@ -37,22 +37,22 @@ const Register = () => {
   const password = watch("password");
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-        <h1 className="text-3xl font-semibold text-center mb-6 font-montserrat">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4 sm:px-6">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-center mb-4 sm:mb-6 font-montserrat">
           Register
         </h1>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4">
           {/* Name */}
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-sm sm:text-base font-medium text-gray-700 mb-1">
               Name
             </label>
             <input
               type="text"
               {...register("name", { required: "Name is required" })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
+              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="Enter your name"
             />
             {errors.name && (
@@ -62,13 +62,19 @@ const Register = () => {
 
           {/* Email */}
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-sm sm:text-base font-medium text-gray-700 mb-1">
               Email
             </label>
             <input
               type="email"
-              {...register("email", { required: "Email is required" })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
+              {...register("email", { 
+                required: "Email is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Please enter a valid email address"
+                }
+              })}
+              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="Enter your email"
             />
             {errors.email && (
@@ -80,7 +86,7 @@ const Register = () => {
 
           {/* Password */}
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-sm sm:text-base font-medium text-gray-700 mb-1">
               Password
             </label>
             <input
@@ -88,8 +94,12 @@ const Register = () => {
               {...register("password", {
                 required: "Password is required",
                 minLength: { value: 6, message: "Minimum 6 characters" },
+                pattern: {
+                  value: /^[A-Za-z0-9]+$/,
+                  message: "Password should only contain numbers and letters"
+                }
               })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
+              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="Enter your password"
             />
             {errors.password && (
@@ -101,7 +111,7 @@ const Register = () => {
 
           {/* Confirm Password */}
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-sm sm:text-base font-medium text-gray-700 mb-1">
               Confirm Password
             </label>
             <input
@@ -111,7 +121,7 @@ const Register = () => {
                 validate: (value) =>
                   value === password || "Passwords do not match",
               })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
+              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="Confirm your password"
             />
             {errors.confirmPassword && (
@@ -124,13 +134,13 @@ const Register = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-redColor hover:text-white text-orange-500 hover:bg-orange-500  py-2 rounded-lg transition duration-200 border-orange-500 border-2 font-montserrat !mt-6 font-medium"
+            className="w-full bg-redColor hover:text-white text-orange-500 hover:bg-orange-500 py-2 text-sm sm:text-base rounded-lg transition duration-200 border-orange-500 border-2 font-montserrat !mt-6 font-medium"
           >
             Register
           </button>
         </form>
 
-        <p className="text-base text-gray-600 text-center mt-4">
+        <p className="text-sm sm:text-base text-gray-600 text-center mt-4">
           Already have an account?
           <Link to="/" className="text-redColor pl-2 hover:underline hover:text-orange-500">
             Login
