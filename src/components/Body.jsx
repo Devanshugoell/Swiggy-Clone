@@ -15,7 +15,7 @@ const Body = () => {
     const fetchData = async () => {
       try {
         const lat = 28.6139;
-        const lng = 77.209;
+        const lng = 77.209 ;
 
         // ✅ 2️⃣ Build dynamic API using template literals
         const newAPI = `https://foodfire.onrender.com/api/restaurants?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`;
