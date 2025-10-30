@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import useOnlineStatus from "../hooks/useOnlineStatus.jsx";
 import { API_CDN } from "../utils/constants.jsx";
 import Banner from "./Banner.jsx";
-import Offline from "../pages/Offline.jsx";
 import TopRest from "./TopRest.jsx";
 import OnlineRest from "./OnlineRest.jsx";
 
@@ -50,12 +48,6 @@ const Body = () => {
 
     fetchData();
   }, []);
-
-  const onlineStatus = useOnlineStatus();
-
-  if (onlineStatus === false) {
-    return <Offline />;
-  }
 
   return (
     <div className="overflow-hidden">
