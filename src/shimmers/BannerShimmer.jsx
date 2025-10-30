@@ -1,31 +1,20 @@
-import { SpinnerCircularFixed } from "spinners-react";
+import React from "react";
+
 function BannerShimmer() {
   return (
-    <div
-      className="animate-pulse flex flex-col items-center justify-center"
-    >
-      <div className="banner-shimmer flex flex-wrap relative py-2 items-center justify-center text-xl mt-4">
-        <div className="flex justify-center gap-6 flex-wrap">
-          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
-          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
-          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
-          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
-          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
-          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
-          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
-          <div className="banner-shimmer-card rounded-lg bg-[#f0f0f0] "></div>
-
-          <div className="border-b-2 border-gray-300 mt-8"></div>
-        </div>
+    <div className="animate-pulse px-4 sm:px-8 md:px-16 lg:px-20">
+      
+      {/* Banner Items Grid */}
+      <div className="flex flex-wrap justify-center sm:justify-center gap-6 sm:gap-8 mb-6 sm:mb-8 pb-4 w-full mt-8">
+        {/* Shimmer circles for banner items */}
+        {[...Array(8)].map((_, index) => (
+          <div 
+            key={index}
+            className="h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-28 rounded-2xl bg-gray-300"
+          ></div>
+        ))}
       </div>
     </div>
-
-
-
-      // <div className="flex border-b-2 border-gray-300">
-      //    <div className="h-40 bg-gray-400"></div>
-      // </div>
-    
   );
 }
 
