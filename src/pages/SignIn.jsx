@@ -85,7 +85,7 @@ const SignIn = () => {
                 required: "Password is required",
                 minLength: { value: 6, message: "Minimum 6 characters" },
               })}
-              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor"
+              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-redColor focus:ring-orange-500"
               placeholder="••••••••"
             />
             {errors.password && (
